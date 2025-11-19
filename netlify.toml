@@ -1,8 +1,6 @@
 [build]
-  command = ""
-  publish = "."
+  command = "npm run build"
+  publish = ".next"
 
-[[redirects]]
-  from = "/data/*"
-  to = "/data/:splat"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

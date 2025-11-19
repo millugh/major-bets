@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ParlayStatus {
+  PENDING
+  WON
+  LOST
+  PUSH
+}
+
+enum LegResult {
+  PENDING
+  HIT
+  MISSED
+  PUSH
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  displayName  String
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  parlays      Parlay[]
+}
+
+model Parlay {
+  id          String        @id @default(uuid())
+  title       String
+  description String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  dateFor     DateTime
+  risk        Decimal       @db.Decimal(10, 2)
+  toWin       Decimal       @db.Decimal(12, 2)
+  odds        String
+  confidence  Int
+  status      ParlayStatus  @default(PENDING)
+  isSpotlight Boolean       @default(false)
+  imageUrl    String?
+  notes       String?
+  createdBy   User          @relation(fields: [createdById], references: [id])
+  createdById String
+  legs        ParlayLeg[]
+}
+
+model ParlayLeg {
+  id         String     @id @default(uuid())
+  parlay     Parlay     @relation(fields: [parlayId], references: [id], onDelete: Cascade)
+  parlayId   String
+  order      Int
+  league     String
+  eventName  String
+  playerName String?
+  market     String
+  line       String
+  legOdds    String
+  note       String?
+  result     LegResult  @default(PENDING)
+}
+
+model PerformanceSnapshot {
+  id       String   @id @default(uuid())
+  fromDate DateTime
+  toDate   DateTime
+  totalBets Int
+  wins     Int
+  losses   Int
+  pushes   Int
+  roi      Float
+  createdAt DateTime @default(now())
+}
