@@ -111,6 +111,38 @@
       </div>
     </section>
 
+    <section class="panel" id="manual-entry">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Manual Parlays</p>
+          <h2>Type instead of uploading</h2>
+        </div>
+        <div class="tag">Local only · JSON is never sent anywhere</div>
+      </div>
+      <article class="panel glass form-card">
+        <p class="form-hint">
+          Paste, type, or tweak the exact JSON you want on the board. Click apply to overwrite the fetched file data and preview
+          the update instantly.
+        </p>
+        <label>
+          <span>Parlay data</span>
+          <textarea id="manual-parlay-input" rows="12" placeholder='{
+  "spotlight": { ... },
+  "daily": [],
+  "weekly": []
+}'></textarea>
+        </label>
+        <div class="manual-actions">
+          <button class="cta ghost small" type="button" id="manual-parlay-load">Load current data</button>
+          <div class="manual-action-group">
+            <button class="cta small" type="button" id="manual-parlay-apply">Apply manual data</button>
+            <button class="cta ghost small" type="button" id="manual-parlay-clear">Clear manual data</button>
+          </div>
+        </div>
+        <p class="form-hint">Stored in your browser only. Refresh to pull from the JSON files again.</p>
+      </article>
+    </section>
+
     <section class="panel" id="custom-slips">
       <div class="panel-heading">
         <div>

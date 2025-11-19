@@ -493,6 +493,27 @@ main {
   min-height: 80px;
 }
 
+#manual-parlay-input {
+  min-height: 240px;
+  font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.manual-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.manual-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .leg-builder {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 20px;

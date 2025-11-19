@@ -121,9 +121,13 @@ const fallbackOdds = {
 let teaserCache = [];
 let oddsInterval;
 let customSlips = [];
+let currentParlays = fallbackParlays;
+let currentOdds = fallbackOdds;
+let sourceParlays = fallbackParlays;
 
 const CUSTOM_SLIPS_KEY = 'majorsBetsCustomSlips';
 const PENDING_LEGS_KEY = 'majorsBetsPendingLegs';
+const MANUAL_PARLAYS_KEY = 'majorsBetsManualParlays';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -147,6 +151,15 @@ const saveStored = (key, value) => {
   }
 };
 
+const removeStored = (key) => {
+  if (!isBrowser) return;
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.warn(`Failed to remove ${key}:`, error.message);
+  }
+};
+
 const oddsSource = 'data/odds.json';
 
 const fetchJson = async (url) => {
@@ -160,32 +173,46 @@ const fetchJson = async (url) => {
   }
 };
 
+const hydrateParlays = (parlays) => {
+  if (!parlays) return;
+  currentParlays = parlays;
+  renderSpotlight(parlays.spotlight, parlays.meta);
+  renderStats(parlays);
+  renderBoard(parlays);
+  renderTeasers(parlays);
+  renderTicker(parlays, currentOdds);
+};
+
+const hydrateOdds = (odds) => {
+  currentOdds = odds;
+  renderOdds(odds);
+  renderTicker(currentParlays, odds);
+};
+
 const init = async () => {
   customSlips = loadStored(CUSTOM_SLIPS_KEY, []);
+  const manualOverride = loadStored(MANUAL_PARLAYS_KEY, null);
   const [parlaysData, oddsData] = await Promise.all([
     fetchJson('data/parlays.json'),
     fetchJson(oddsSource),
   ]);
 
-  const parlays = parlaysData || fallbackParlays;
+  sourceParlays = parlaysData || fallbackParlays;
+  const parlays = manualOverride || sourceParlays;
   const odds = oddsData || fallbackOdds;
 
-  renderSpotlight(parlays.spotlight, parlays.meta);
-  renderStats(parlays);
-  renderBoard(parlays);
-  renderOdds(odds);
-  renderTeasers(parlays);
-  renderTicker(parlays, odds);
+  hydrateParlays(parlays);
+  hydrateOdds(odds);
   wireBoardControls();
   wireButtons();
   wireUploads();
+  wireManualEntry();
   setFooterYear();
 
   if (oddsInterval) clearInterval(oddsInterval);
   oddsInterval = setInterval(async () => {
-    const nextOdds = (await fetchJson(oddsSource)) || odds;
-    renderOdds(nextOdds);
-    renderTicker(parlays, nextOdds);
+    const nextOdds = (await fetchJson(oddsSource)) || currentOdds;
+    hydrateOdds(nextOdds);
   }, 1000 * 60 * 5);
 };
 
@@ -390,6 +417,47 @@ const wireButtons = () => {
     } catch (error) {
       alert(teaser);
     }
+  });
+};
+
+const wireManualEntry = () => {
+  const textarea = document.getElementById('manual-parlay-input');
+  if (!textarea) return;
+
+  const applyBtn = document.getElementById('manual-parlay-apply');
+  const loadBtn = document.getElementById('manual-parlay-load');
+  const clearBtn = document.getElementById('manual-parlay-clear');
+
+  const storedManual = loadStored(MANUAL_PARLAYS_KEY, null);
+  if (storedManual) {
+    textarea.value = JSON.stringify(storedManual, null, 2);
+  }
+
+  loadBtn?.addEventListener('click', () => {
+    textarea.value = JSON.stringify(currentParlays, null, 2);
+  });
+
+  applyBtn?.addEventListener('click', () => {
+    const raw = textarea.value.trim();
+    if (!raw) {
+      alert('Add JSON before applying.');
+      return;
+    }
+    try {
+      const nextParlays = JSON.parse(raw);
+      hydrateParlays(nextParlays);
+      saveStored(MANUAL_PARLAYS_KEY, nextParlays);
+      alert('Manual parlays applied locally.');
+    } catch (error) {
+      alert('Invalid JSON. Fix the formatting and try again.');
+    }
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    removeStored(MANUAL_PARLAYS_KEY);
+    textarea.value = '';
+    hydrateParlays(sourceParlays);
+    alert('Manual parlays cleared. Live data restored.');
   });
 };
 
