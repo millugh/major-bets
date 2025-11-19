@@ -1,0 +1,8 @@
+[build]
+  command = ""
+  publish = "."
+
+[[redirects]]
+  from = "/data/*"
+  to = "/data/:splat"
+  status = 200

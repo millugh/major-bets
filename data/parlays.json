@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "lastUpdated": "2024-08-11T13:05:00-04:00"
+  },
+  "stats": {
+    "record30": "21-11",
+    "closingValue": "+3820",
+    "avgLegs": 24,
+    "hitRate": "48%"
+  },
+  "spotlight": {
+    "title": "Champagne Tower 25-leg",
+    "sport": "NFL · NBA · MLB",
+    "tagline": "FanDuel super boost of the day",
+    "risk": "$40",
+    "toWin": "$24,400",
+    "confidence": "3 🔥",
+    "notes": [
+      "CLV locked on four alt spreads with early window steam.",
+      "Only one weather flag: Wrigley wind blowing in (under legs).",
+      "Built in hedge at legs 19 & 22 if live cashout pops."
+    ],
+    "marketPulse": {
+      "movement": "KC -3.5 → -4.5",
+      "tempo": "All pace-up NBA matchups",
+      "weather": "Wrigley 14mph in, rest domes"
+    },
+    "legs": [
+      { "selection": "Chiefs -3.5 alt", "detail": "Mahomes at home", "odds": "-128" },
+      { "selection": "Bills +7.5 alt", "detail": "Teaser protection", "odds": "-145" },
+      { "selection": "Lions moneyline", "detail": "Home roar", "odds": "-118" },
+      { "selection": "Josh Allen 25+ rush", "detail": "Prime legs", "odds": "-115" },
+      { "selection": "Kelce 60+ yards", "detail": "Middle of the field", "odds": "-108" },
+      { "selection": "Amon-Ra TD", "detail": "Red zone usage", "odds": "+140" },
+      { "selection": "CeeDee Lamb 80+ yards", "detail": "Volume", "odds": "+125" },
+      { "selection": "Tyreek Hill 90+ yards", "detail": "Track meet", "odds": "+105" },
+      { "selection": "Eagles alt spread -1.5", "detail": "Trenches", "odds": "-120" },
+      { "selection": "LaMelo Ball 8+ assists", "detail": "Pace spot", "odds": "-112" },
+      { "selection": "Steph Curry 4+ threes", "detail": "Home rims", "odds": "-125" },
+      { "selection": "Jayson Tatum 30+ points", "detail": "Usage spike", "odds": "+110" },
+      { "selection": "Anthony Davis 10+ rebounds", "detail": "Paint touch", "odds": "-118" },
+      { "selection": "Luka Doncic 8+ assists", "detail": "Half court maestro", "odds": "-122" },
+      { "selection": "Heat / Knicks over 214.5", "detail": "Pace up", "odds": "-105" },
+      { "selection": "Yankees moneyline", "detail": "Cole on bump", "odds": "-134" },
+      { "selection": "Judge 2+ total bases", "detail": "Wind neutral", "odds": "+115" },
+      { "selection": "Soto to record a hit", "detail": "Consistency", "odds": "-210" },
+      { "selection": "Astros under 4.5 runs", "detail": "Wind in", "odds": "-104" },
+      { "selection": "Dodgers moneyline", "detail": "Run support", "odds": "-150" },
+      { "selection": "Ohtani to record a run", "detail": "Top lineup", "odds": "+115" },
+      { "selection": "Rangers team total over 3.5", "detail": "Bullpen fade", "odds": "-110" },
+      { "selection": "Padres moneyline", "detail": "Lefty splits", "odds": "-125" },
+      { "selection": "Tatis 1+ RBI", "detail": "Middle order", "odds": "+135" },
+      { "selection": "Braves moneyline", "detail": "Nightcap", "odds": "-140" }
+    ]
+  },
+  "daily": [
+    {
+      "title": "Sunday Blitz",
+      "sport": "NFL",
+      "legs": 11,
+      "odds": "+3100",
+      "risk": "$25",
+      "win": "$775",
+      "confidence": "4 🔥",
+      "window": "1:00 PM ET",
+      "note": "QB rushing ladder, WR alt yardage"
+    },
+    {
+      "title": "Hardwood Vibes",
+      "sport": "NBA",
+      "legs": 9,
+      "odds": "+2150",
+      "risk": "$15",
+      "win": "$322",
+      "confidence": "3 🔥",
+      "window": "7:30 PM ET",
+      "note": "Assist ladders + pace ups"
+    },
+    {
+      "title": "Nightcap Bombs",
+      "sport": "MLB",
+      "legs": 8,
+      "odds": "+1840",
+      "risk": "$20",
+      "win": "$368",
+      "confidence": "2 🔥",
+      "window": "10:10 PM ET",
+      "note": "Total bases prop mash"
+    }
+  ],
+  "weekly": [
+    {
+      "title": "Heat Check Stack",
+      "sport": "Mixed",
+      "legs": 25,
+      "odds": "+52000",
+      "risk": "$15",
+      "win": "$7,800",
+      "confidence": "3 🔥",
+      "window": "All week",
+      "note": "Cross-sport anchor"
+    },
+    {
+      "title": "Underdog Uprising",
+      "sport": "NFL",
+      "legs": 6,
+      "odds": "+4800",
+      "risk": "$20",
+      "win": "$960",
+      "confidence": "2 🔥",
+      "window": "Sun slate",
+      "note": "Alt spreads + ML sprinkles"
+    }
+  ],
+  "history": [
+    { "title": "Tower 7/12", "result": "Hit", "roi": "+$6,200", "highlight": "MLB/NFL hybrid", "stamp": "Jul 12" },
+    { "title": "Late-night Ladder", "result": "1 leg short", "roi": "-$25", "highlight": "West coast NBA", "stamp": "Jul 9" },
+    { "title": "Metro Mash", "result": "Hedge profit", "roi": "+$410", "highlight": "Live hedge Q4", "stamp": "Jul 2" }
+  ],
+  "teasers": [
+    "Champagne Tower is live. 25 legs. FanDuel super-boost energy.",
+    "Heat Check Stack reloaded with NFL / NBA / MLB edges.",
+    "Follow @majorsbets on X for live cashout calls."
+  ]
+}
